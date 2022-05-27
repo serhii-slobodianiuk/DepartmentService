@@ -20,8 +20,8 @@ public class EmployeeDto {
     @NotEmpty(message = "Phone number can't be empty")
     String phoneNumber;
 
-    @NotNull(message = "e_mail can't be null")
-    @NotEmpty(message = "e_mail can't be empty")
+    @NotNull(message = "Email can't be null")
+    @NotEmpty(message = "Email can't be empty")
     String email;
 
     @NotNull(message = "Department can't be null")

@@ -6,55 +6,59 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Create</title>
+    <title>Create Employee</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="<c:url value="/styles/form-control.css"/>"  type="text/css"/>
 </head>
 <body>
-<div align="center">
+<div class="container">
+    <p>
+    <h1>Create Employee</h1>
+
     <form:form method="POST" action="/employee/create_employee" modelAttribute="employeeDto">
-        <caption><h1>Create Employee</h1></caption>
-        <h2><p style="color:red;"><c:out value="${general_error_message}"/></p></h2>
+        <div class="form-group">
+            <form:label path="name">Name:</form:label>
+            <form:input type="text" path="name" class="control-form" placeholder="*${errors.getFieldError('name').defaultMessage}"/>
+        </div>
 
-        <form:label path="name">Name:</form:label>
-        <form:input type="text" path="name"/>
-        <p style="color:red;"><form:errors path="name" cssClass="errors"/></p>
+        <div class="form-group">
+            <form:label path="phoneNumber">Phone Number:</form:label>
+            <form:input type="text" path="phoneNumber" class="control-form"
+                        placeholder="*${errors.getFieldError('phoneNumber').defaultMessage}"/>
+        </div>
 
-        <form:label path="phoneNumber">Phone Number:</form:label>
-        <form:input type="text" path="phoneNumber"/>
-        <p style="color:red;"><form:errors path="phoneNumber" cssClass="errors"/></p>
+        <div class="form-group">
+            <form:label path="email">Email:</form:label>
+            <form:input type="text" path="email" class="control-form"
+                        placeholder="*${errors.getFieldError('email').defaultMessage}"/>
+        </div>
 
-        <label for="birthday">Birthday:</label>
-        <input type="date" name="birthday" id="birthday"/>
-        <p/></p>
+        <div class="form-group">
+            <label for="birthday">Birthday:</label>
+            <input type="date" name="birthday" id="birthday" class="control-form" value="2022-02-02"/>
+        </div>
 
-        <%--        <form:label path="birthday">Birthday: </form:label>--%>
-        <%--        <fmt:formatDate value="${employeeDto.birthday}" pattern="yyyy-MM-dd" var="birthday"/>--%>
-        <%--        <form:input type="date" path="birthday" value="${birthday}"/>--%>
-        <%--        <p style="color:red;"><form:errors path="birthday" cssClass="errors"/></p>--%>
+        <div class="form-group">
+            <form:label path="salary">Salary:</form:label>
+            <form:input type="text" path="salary" class="control-form"/>
+        </div>
 
-        <form:label path="email">e_male:</form:label>
-        <form:input type="text" path="email"/>
-        <p style="color:red;"><form:errors path="email" cssClass="errors"/></p>
+        <div class="form-group">
+            <form:label path="dept">Department:</form:label>
+            <form:select path="dept" class="control-form">
+                <c:forEach items="${departments}" var="department">
+                    <form:option value="${department.id}" label="${department.name}"/>
+                </c:forEach>
+            </form:select>
+        </div>
 
-        <form:label path="salary">Salary:</form:label>
-        <form:input type="text" path="salary"/>
-        <p style="color:red;"><form:errors path="salary" cssClass="errors"/></p>
-
-        <form:label path="dept">Department:</form:label>
-        <form:select path="dept">
-            <c:forEach items="${departments}" var="department">
-                <form:option value="${department.id}" label="${department.name}"/>
-            </c:forEach>
-        </form:select>
-        <p style="color:red;"><form:errors path="dept" cssClass="errors"/></p>
-
-        <input type="submit" value="Save"/>
+        <input type="submit" value="Save" class="btn btn-success"/>
         <br>
     </form:form>
-    <br>
-    <button>
-        <a href="/employee/display_employees">List of Employees</a>
-    </button>
+    <div class="col-sm-7" style="margin: 20px 0px 20px 0px">
+        <a class="btn btn-success" href="/employee/display_employees">Display Employees</a>
+    </div>
 </div>
+<br><br>
 </body>
 </html>
-

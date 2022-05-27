@@ -5,25 +5,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Create</title>
+    <title>Edit</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="<c:url value="/styles/form-control.css"/>"  type="text/css"/>
+    <style>
+<%--        <%@include file="/WEB-INF/css/form-control.css" %>--%>
+    </style>
 </head>
 <body>
-<div align="center">
-    <form:form method="POST" action="/department/edit_department" modelAttribute="departmentDto">
-        <h1>Edit Department</h1>
-        <h2><p style="color:red;"><c:out value="${general_error_message}"/></p></h2>
+<div class="container">
+    <p>
+    <h1>Edit Department</h1>
 
+    <form:form method="POST" action="/department/edit_department" modelAttribute="departmentDto">
         <form:hidden path="id" value="${dep_id}"/>
 
-        <form:label path="name">Name:</form:label>
-        <form:input type="text" path="name" value="${dep_name}"/>
-        <p style="color:red;"><form:errors path="name" cssClass="errors"/></p>
-        <input type="submit" value="Save"/>
-        <br><br>
+        <div class="form-group">
+            <form:label path="name">Name:</form:label>
+            <c:choose>
+                <c:when test="${errors.hasErrors()}">
+                    <form:input class="control-form" type="text" path="name"
+                                placeholder="*${errors.getFieldError('name').defaultMessage}"/>
+                </c:when>
+                <c:otherwise>
+                    <form:input class="control-form" type="text" path="name" value="${dep_name}"/>
+                </c:otherwise>
+            </c:choose>
+        </div>
+
+        <input type="submit" value="Save" class="btn btn-success"/>
+        <br>
     </form:form>
-    <button>
-        <a href="/department/display_departments">List of Departments</a>
-    </button>
+    <div class="col-sm-7" style="margin: 20px 0px 20px 0px">
+        <a class="btn btn-success" href="/department/display_departments">Display Departments</a>
+    </div>
 </div>
+<br><br>
 </body>
 </html>

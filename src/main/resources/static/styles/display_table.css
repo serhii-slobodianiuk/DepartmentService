@@ -1,0 +1,54 @@
+body {
+    background-color: lightblue
+}
+
+.edit-control {
+    position: center;
+    font-size: 17px;
+    table-layout: fixed;
+    width: 10px;
+}
+
+.delete-control {
+    font-size: 17px;
+    color: red;
+}
+
+.background-lightblue {
+    background-color: lightblue;
+}
+
+.cell-border-left {
+    border-radius: 4px 0 0 4px;
+}
+
+.cell-border-right {
+    border-radius: 0 4px 4px 0;
+}
+
+#display-table {
+    width: 1120px;
+    border-spacing: 0 50px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: separate;
+}
+
+#display-table td, #display-table th {
+    font-size: 16px;
+    padding: 7px;
+}
+
+#display-table tr {
+    background-color: white;
+}
+
+#display-table tr:nth-child(even) {
+    /*background-color: #f2f2f2;*/
+    background-color: #ddd;
+
+}
+
+#display-table tr:hover {
+    background-color: lightgrey;
+
+}

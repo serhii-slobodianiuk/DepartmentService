@@ -1,62 +1,51 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+<!DOCTYPE html>
 <html xmlns>
 <head>
     <title>Employees</title>
-    <style>
-        ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<c:url value="/styles/display_table.css"/>"  type="text/css"/>
 </head>
-
 <body>
-<div align="center">
-    <table border="1" cellpadding="5">
-        <caption><h1>Employees</h1></caption>
-        <tr>
-            <th>Name</th>
-            <th>Phone Number</th>
-            <th>Birthday</th>
-            <th>Email</th>
-            <th>Salary</th>
-            <th>Department</th>
-            <th>Edit</th>
-            <th>Delete</th>
-        </tr>
+<div class="container">
+    <p>
+    <h1>Employees</h1>
+
+    <table id="display-table">
+        <colgroup>
+            <col style="width:15%">
+            <col style="width:15%">
+            <col style="width:15%">
+            <col style="width:15%">
+            <col style="width:15%">
+            <col style="width:15%">
+            <col style="width:3%">
+            <col style="width:3%">
+        </colgroup>
         <c:forEach items="${employees}" var="employee">
             <tr>
-                <td>${employee.name}</td>
-                <td>${employee.phoneNumber}</td>
-                <td>${employee.birthday}</td>
-                <td>${employee.email}</td>
-                <td>${employee.salary}</td>
-                <td>${employee.dept.name}</td>
-                <td>
-                    <button>
-                        <a href="/employee/show_edit_form?id=${employee.id}">edit</a>
-                    </button>
-                </td>
-                <td>
-                    <button><a href="/employee/delete_employee?id=${employee.id}">delete</a></button>
+                <td align="left" class="cell-border-left">${employee.name}</td>
+                <td align="left">${employee.phoneNumber}</td>
+                <td align="left">${employee.email}</td>
+                <td align="left">${employee.birthday}</td>
+                <td align="left">${employee.salary}</td>
+                <td align="left">${employee.dept.name}</td>
+                <td><a class="fa fa-edit edit-control" href="/employee/show_edit_form?id=${employee.id}"></a></td>
+                <td class="cell-border-right"><a class="fa fa-trash delete-control" href="/employee/delete_employee?id=${employee.id}"></a>
                 </td>
             </tr>
         </c:forEach>
     </table>
-    <br>
-    <button>
-        <a href="/employee/show_create_form">Create new Employee</a>
-<%--        <a href="/employee/create_employee">Create new Employee</a>--%>
-    </button>
-    <br>
-    <br>
-    <button>
-        <a href="/department/display_departments">List of Departments</a>
-    </button>
-    <br>
 </div>
+<br>
+<div align="center">
+    <a class="btn btn-success" href="/employee/show_create_form">Create Employee</a>
+    <a class="btn btn-success" href="/department/display_departments">Display Departments</a>
+</div>
+<br><br>
 </body>
 </html>
