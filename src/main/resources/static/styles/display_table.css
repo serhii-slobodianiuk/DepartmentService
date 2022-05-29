@@ -39,16 +39,17 @@ body {
 }
 
 #display-table tr {
-    background-color: white;
+    background-color: #ddd;
 }
 
 #display-table tr:nth-child(even) {
-    /*background-color: #f2f2f2;*/
-    background-color: #ddd;
-
+    background-color: white;
 }
 
 #display-table tr:hover {
     background-color: lightgrey;
+}
 
+#display-table th {
+    font-family: Verdana, sans-serif;
 }
