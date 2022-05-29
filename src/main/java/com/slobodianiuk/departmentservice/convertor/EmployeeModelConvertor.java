@@ -13,11 +13,7 @@ public class EmployeeModelConvertor implements Convertor<Employee, EmployeeDto> 
     @Override
     public Employee convertToModel(EmployeeDto employeeDto) {
         Employee employee = new Employee();
-        if (employeeDto.getId() == null) {
-            employee.setId(0);
-        } else {
-            employee.setId(employeeDto.getId());
-        }
+        employee.setId(employeeDto.getId() == null ? Integer.valueOf(0) : employeeDto.getId());
         employee.setDept(employeeDto.getDept());
         employee.setName(employeeDto.getName());
         employee.setPhoneNumber(employeeDto.getPhoneNumber());

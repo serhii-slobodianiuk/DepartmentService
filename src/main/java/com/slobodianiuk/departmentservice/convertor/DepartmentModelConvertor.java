@@ -10,11 +10,7 @@ public class DepartmentModelConvertor implements Convertor<Department, Departmen
     @Override
     public Department convertToModel(DepartmentDto departmentDto) {
         Department department = new Department();
-        if (departmentDto.getId() == null) {
-            department.setId(0);
-        } else {
-            department.setId(departmentDto.getId());
-        }
+        department.setId(departmentDto.getId() == null ? Integer.valueOf(0) : departmentDto.getId());
         department.setName(departmentDto.getName());
         return department;
     }
