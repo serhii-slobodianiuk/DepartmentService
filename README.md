@@ -10,8 +10,7 @@ A department can have many employees and an employee can only belong to 1 depart
 <br/>
 Users have the ability to create, edit and delete entries.
 <br/>
-Also they have the possibility to display all employees which belonging to specific department by clicking the button
-<br/>
+Also they have the possibility to display all employees which belonging to specific department by clicking the button 
 with name of the last one.
 <br/>
 <br/>
